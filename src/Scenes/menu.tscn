@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4vgtkcnqdqbo"]
+
+[ext_resource type="Script" path="res://Scenes/Buttons.gd" id="1_f14qk"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_right = 1024.0
+offset_bottom = 578.0
+color = Color(0.133333, 0.145098, 0.168627, 1)
+
+[node name="Label" type="Label" parent="Background"]
+offset_top = 100.0
+offset_right = 1024.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 64
+text = "Shoot that Beu
+"
+horizontal_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="."]
+script = ExtResource("1_f14qk")
+
+[node name="HomeMenuButtons" type="Node2D" parent="Buttons"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons/HomeMenuButtons"]
+offset_top = 300.0
+offset_right = 1024.0
+offset_bottom = 404.0
+
+[node name="StartButton" type="Button" parent="Buttons/HomeMenuButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Start"
+flat = true
+
+[node name="CharacterButton" type="Button" parent="Buttons/HomeMenuButtons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Character"
+flat = true
+
+[connection signal="pressed" from="Buttons/HomeMenuButtons/VBoxContainer/StartButton" to="Buttons" method="_on_start_button_pressed"]
