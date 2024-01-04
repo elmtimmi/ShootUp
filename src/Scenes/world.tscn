@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo8vxa4djdlqi"]
+[gd_scene load_steps=12 format=3 uid="uid://bo8vxa4djdlqi"]
 
 [ext_resource type="Script" path="res://Scenes/Joystick.gd" id="1_c6n8r"]
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_mrori"]
 [ext_resource type="Texture2D" uid="uid://ddubdf2ustvmr" path="res://Assets/joyknobpng.png" id="1_sv3m6"]
 [ext_resource type="Texture2D" uid="uid://cw412sefn03dm" path="res://Assets/tileset/Solaria Demo Update 01.png" id="1_xv2ba"]
 [ext_resource type="Texture2D" uid="uid://cffvhw18f5csq" path="res://Assets/joyring.png" id="2_yh7yb"]
@@ -379,6 +380,7 @@ sources/0 = SubResource("TileSetAtlasSource_any04")
 radius = 64.7611
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_mrori")
 
 [node name="Background" type="Node2D" parent="."]
 
