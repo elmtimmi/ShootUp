@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 @onready var joystick = $"../HUD/Joystick"
 
+
+### Variables
+
 # map boundaries
 var tilesize = 16
 var map_min_x = -32 * tilesize
-var map_max_x = 96 * tilesize - 4 * tilesize
+var map_max_x = 96 * tilesize - 7 * tilesize
 var map_min_y = -48 * tilesize + 1 * tilesize
 var map_max_y = 80 * tilesize - 5 * tilesize
 
