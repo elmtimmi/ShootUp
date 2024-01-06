@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdcc2p5cso4pg"]
+[gd_scene load_steps=6 format=3 uid="uid://cdcc2p5cso4pg"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_4b15l"]
 [ext_resource type="Texture2D" uid="uid://bh3rn1ypo6tbc" path="res://Assets/icon.svg" id="2_sqvyl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjkhh"]
-radius = 61.8466
+radius = 25.2982
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0f51"]
+radius = 70.0286
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmkju"]
+radius = 139.27
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
-collision_layer = 2
 script = ExtResource("1_4b15l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,3 +21,21 @@ texture = ExtResource("2_sqvyl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wjkhh")
+debug_color = Color(0.803922, 0.329412, 0.662745, 0.419608)
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("CircleShape2D_d0f51")
+
+[node name="EnemyRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyRange"]
+shape = SubResource("CircleShape2D_pmkju")
+debug_color = Color(0.47451, 0.545098, 0.607843, 0.419608)
+
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
+[connection signal="body_entered" from="EnemyRange" to="." method="_on_enemy_range_body_entered"]
+[connection signal="body_exited" from="EnemyRange" to="." method="_on_enemy_range_body_exited"]
