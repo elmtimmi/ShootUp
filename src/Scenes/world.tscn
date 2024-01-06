@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bo8vxa4djdlqi"]
+[gd_scene load_steps=13 format=3 uid="uid://bo8vxa4djdlqi"]
 
 [ext_resource type="Script" path="res://Scenes/Joystick.gd" id="1_c6n8r"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_mrori"]
@@ -379,6 +379,9 @@ sources/0 = SubResource("TileSetAtlasSource_any04")
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjh7p"]
 radius = 64.7611
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pstc8"]
+radius = 84.2641
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_mrori")
 
@@ -393,6 +396,7 @@ layer_0/tile_data = PackedInt32Array(65504, 0, 7, 131040, 0, 7, 196576, 0, 7, 26
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(512, 289)
 scale = Vector2(0.75, 0.75)
+collision_mask = 2
 script = ExtResource("5_dj6c5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -408,6 +412,12 @@ drag_left_margin = 0.3
 drag_top_margin = 0.3
 drag_right_margin = 0.3
 drag_bottom_margin = 0.3
+
+[node name="PlayerHitbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerHitbox"]
+shape = SubResource("CircleShape2D_pstc8")
+one_way_collision_margin = 0.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -432,5 +442,35 @@ offset_top = -93.0
 offset_right = 93.0
 offset_bottom = 93.0
 
+[node name="RoundTimerDisplay" type="Label" parent="HUD"]
+offset_right = 1024.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 30
+text = "Time left in round"
+horizontal_alignment = 1
+
+[node name="HealthStatusLabel" type="Label" parent="HUD"]
+offset_left = 50.0
+offset_top = 20.0
+offset_right = 211.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 26
+text = "Your health: "
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+autostart = true
+
+[node name="RoundTimer" type="Timer" parent="Timers"]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Player/PlayerHitbox" to="Player" method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="Player/PlayerHitbox" to="Player" method="_on_player_hitbox_body_exited"]
 [connection signal="button_down" from="HUD/Joystick/Button" to="HUD/Joystick/Knob" method="_on_button_button_down"]
 [connection signal="button_up" from="HUD/Joystick/Button" to="HUD/Joystick/Knob" method="_on_button_button_up"]
+[connection signal="timeout" from="Timers/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="Timers/RoundTimer" to="." method="_on_round_timer_timeout"]
