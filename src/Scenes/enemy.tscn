@@ -10,7 +10,7 @@ radius = 25.2982
 radius = 70.0286
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pmkju"]
-radius = 139.27
+radius = 84.214
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -29,6 +29,7 @@ debug_color = Color(0.803922, 0.329412, 0.662745, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 shape = SubResource("CircleShape2D_d0f51")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="EnemyRange" type="Area2D" parent="."]
 

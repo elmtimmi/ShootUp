@@ -26,6 +26,7 @@ func spawn_enemy(pos):
 	enemy_instance.position = pos
 	add_child(enemy_instance)
 	
+	## Enemy attack on player
 	enemy_instance.connect("attacking_player", Callable($Player, "_on_attacking_player"))
 	# To debug the connection:
 	#var connection_result = enemy_instance.connect("attacking_player", Callable($Player, "_on_attacking_player"))
@@ -33,7 +34,15 @@ func spawn_enemy(pos):
 	#	print("Signal successfully connected.")
 	#else:
 	#	print("Signal connection failed. Error: ", connection_result)
-
+	
+	## Player attack on enemy
+	$Player.connect("attacking_enemy", Callable(enemy_instance, "_on_attacking_enemy"))
+	# To debug the connection:
+	#var connection_result = $Player.connect("attacking_enemy", Callable(enemy_instance, "_on_attacking_enemy"))
+	#if connection_result == OK:
+	#	print("Signal successfully connected.")
+	#else:
+	#	print("Signal connection failed. Error: ", connection_result)
 
 func random_pos_on_map():
 	var random_x = randf_range(map_min_x, map_max_x)
