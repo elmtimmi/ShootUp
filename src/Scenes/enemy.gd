@@ -12,6 +12,7 @@ var player_in_this_enemys_hitbox = false
 
 # Signales
 signal attacking_player(damage)
+signal enemy_died(global_position)
 
 
 func set_player(player_node):
@@ -22,7 +23,9 @@ func _physics_process(delta):
 	position += direction * speed * delta
 	attack_player()
 	if enemy_health <= 0:
+		emit_signal("enemy_died", global_position)
 		queue_free()  # Removes the enemy from the scene
+		
 	# if the enemys should not be able to stack over each other use:
 	# move_and_slide()
 
