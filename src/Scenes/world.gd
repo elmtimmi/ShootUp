@@ -4,6 +4,7 @@ extends Node2D
 ### Variables
 # Scenes
 var enemy_scene = preload("res://Scenes/enemy.tscn")
+var money_scene = preload("res://Scenes/money.tscn")
 var enemy_damage
 
 # map boundaries
@@ -43,6 +44,15 @@ func spawn_enemy(pos):
 	#	print("Signal successfully connected.")
 	#else:
 	#	print("Signal connection failed. Error: ", connection_result)
+	
+	## Enemy dies
+	# enemy_instance.connect("enemy_died", Callable(enemy_instance, "_on_enemy_died"))
+	# To debug the connection:
+	var connection_result = enemy_instance.connect("enemy_died", Callable(self, "_on_enemy_died"))
+	if connection_result == OK:
+		print("Signal successfully connected.")
+	else:
+		print("Signal connection failed. Error: ", connection_result)
 
 func random_pos_on_map():
 	var random_x = randf_range(map_min_x, map_max_x)
@@ -70,7 +80,13 @@ func _process(delta):
 	var time_left = round_timer.time_left
 	var timer_label_path = $HUD/RoundTimerDisplay  # Path to the Label node
 	timer_label_path.text = str(int(time_left))
-
+	
+func _on_enemy_died(position):
+	print("Signal received! Enemy died!")
+	var money = money_scene.instantiate()
+	money.global_position = position
+	add_child(money)
+	
 
 func _on_enemy_spawn_timer_timeout():
 	spawn_enemy(random_pos_on_map())
