@@ -1,0 +1,261 @@
+[gd_scene load_steps=5 format=3 uid="uid://d37fmqdtts47t"]
+
+[ext_resource type="Script" path="res://Scenes/end_of_round.gd" id="1_lakeq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw8q5"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.439216, 0.439216, 0.439216, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c65i2"]
+bg_color = Color(1, 0.992157, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rivo"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.439216, 0.439216, 0.439216, 1)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+
+[node name="endOfRound" type="Node2D"]
+script = ExtResource("1_lakeq")
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="background"]
+offset_right = 1024.0
+offset_bottom = 578.0
+color = Color(0.133333, 0.145098, 0.168627, 1)
+
+[node name="VFlowContainer" type="VFlowContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="header" type="Node2D" parent="VFlowContainer"]
+
+[node name="Label" type="Label" parent="VFlowContainer/header"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 3.0
+offset_right = 1024.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Wave 1 Finished"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="playerStats" type="Node2D" parent="VFlowContainer"]
+
+[node name="Panel" type="Panel" parent="VFlowContainer/playerStats"]
+offset_left = 22.0
+offset_top = 38.0
+offset_right = 338.315
+offset_bottom = 538.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
+
+[node name="Label4" type="Label" parent="VFlowContainer/playerStats"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 30.0
+offset_top = 47.0
+offset_right = 330.0
+offset_bottom = 97.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Your stats"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VFlowContainer/playerStats"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 51.0
+offset_top = 103.0
+offset_right = 301.0
+offset_bottom = 503.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "- Player speed: 2
+- Atack speed: 3
+- Melee range: 5
+- Long-distance: 5
+- Leben
+- Rüstung"
+
+[node name="footer" type="Node2D" parent="VFlowContainer"]
+
+[node name="Button" type="Button" parent="VFlowContainer/footer"]
+modulate = Color(0.996078, 1, 1, 1)
+custom_minimum_size = Vector2(250, 50)
+offset_left = 744.0
+offset_top = 474.0
+offset_right = 994.0
+offset_bottom = 524.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_c65i2")
+text = "Next Round"
+
+[node name="Button2" type="Button" parent="VFlowContainer/footer"]
+modulate = Color(0.996078, 1, 1, 1)
+custom_minimum_size = Vector2(250, 50)
+offset_left = 425.0
+offset_top = 474.0
+offset_right = 675.0
+offset_bottom = 524.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_c65i2")
+text = "Reroll"
+
+[node name="Card1" type="Node2D" parent="VFlowContainer"]
+
+[node name="Panel2" type="Panel" parent="VFlowContainer/Card1"]
+offset_left = 359.0
+offset_top = 116.0
+offset_right = 559.205
+offset_bottom = 427.96
+theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
+
+[node name="Label5" type="Label" parent="VFlowContainer/Card1"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 371.0
+offset_top = 128.0
+offset_right = 549.065
+offset_bottom = 188.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tims Trank"
+horizontal_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="Label6" type="Label" parent="VFlowContainer/Card1"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 371.0
+offset_top = 170.0
+offset_right = 549.065
+offset_bottom = 412.92
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "
+next Round 
++5 Leben
++3 Speed"
+horizontal_alignment = 1
+
+[node name="Card2" type="Node2D" parent="VFlowContainer"]
+
+[node name="Panel3" type="Panel" parent="VFlowContainer/Card2"]
+offset_left = 583.0
+offset_top = 114.0
+offset_right = 783.205
+offset_bottom = 425.96
+theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
+
+[node name="Label7" type="Label" parent="VFlowContainer/Card2/Panel3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.1025
+offset_top = 14.0
+offset_right = 88.9625
+offset_bottom = 73.99
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Gigantisches 
+Schwert"
+horizontal_alignment = 1
+autowrap_mode = 3
+justification_flags = 35
+clip_text = true
+
+[node name="Card3" type="Node2D" parent="VFlowContainer"]
+
+[node name="Panel4" type="Panel" parent="VFlowContainer/Card3"]
+offset_left = 804.0
+offset_top = 113.0
+offset_right = 1004.21
+offset_bottom = 424.96
+theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
+
+[node name="Label8" type="Label" parent="VFlowContainer/Card3"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 817.0
+offset_top = 128.0
+offset_right = 995.065
+offset_bottom = 187.99
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Kleiner Hut"
+horizontal_alignment = 1
+autowrap_mode = 3
+justification_flags = 35
+clip_text = true
+
+[node name="Profile" type="Node2D" parent="VFlowContainer"]
+
+[node name="Label2" type="Label" parent="VFlowContainer/Profile"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 725.0
+offset_top = 47.0
+offset_right = 957.0
+offset_bottom = 97.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "1.235$"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel6" type="Panel" parent="VFlowContainer/Profile"]
+offset_left = 912.0
+offset_top = 5.0
+offset_right = 1012.0
+offset_bottom = 105.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7rivo")
+
+[node name="Label5" type="Label" parent="VFlowContainer/Profile"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 986.0
+offset_top = 30.0
+offset_right = 1036.0
+offset_bottom = 80.0
+grow_horizontal = 2
+rotation = 1.5708
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = ":)"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VFlowContainer/footer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VFlowContainer/footer/Button2" to="." method="_on_button_pressed"]
