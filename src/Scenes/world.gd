@@ -80,4 +80,4 @@ func _on_enemy_spawn_timer_timeout():
 
 
 func _on_round_timer_timeout():
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/end_of_round.tscn")
