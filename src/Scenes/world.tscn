@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo8vxa4djdlqi"]
+[gd_scene load_steps=15 format=3 uid="uid://bo8vxa4djdlqi"]
 
 [ext_resource type="Script" path="res://Scenes/Joystick.gd" id="1_c6n8r"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_mrori"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Knob.gd" id="4_c05kv"]
 [ext_resource type="Script" path="res://Scenes/Player.gd" id="5_dj6c5"]
 [ext_resource type="Texture2D" uid="uid://bh3rn1ypo6tbc" path="res://Assets/icon.svg" id="5_nn8qk"]
+[ext_resource type="Script" path="res://Scenes/Global.gd" id="9_cxns5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_any04"]
 texture = ExtResource("1_xv2ba")
@@ -478,6 +479,9 @@ autostart = true
 wait_time = 20.0
 one_shot = true
 autostart = true
+
+[node name="Global" type="Node2D" parent="."]
+script = ExtResource("9_cxns5")
 
 [connection signal="body_entered" from="Player/PlayerHitbox" to="Player" method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player/PlayerHitbox" to="Player" method="_on_player_hitbox_body_exited"]

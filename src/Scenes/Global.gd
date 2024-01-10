@@ -1,5 +1,9 @@
 extends Node2D
 
+### Variables
+var money = 0
+var round_counter = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,12 +13,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-func _on_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/world.tscn")
-
-# Example for 
-#func some_func():
-#	Global.money += 1
-	
