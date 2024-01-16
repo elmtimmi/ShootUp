@@ -23,7 +23,11 @@ func _process(delta):
 		else:
 			itemStringNameList += ", " + Global.backpack[i].title
 	
-	stats_text.text = "Buyed Items (" + str(Global.backpack.size()) + "): " + itemStringNameList
+	var player_attributes = ""
+	for key in Global.player_attributes:
+		player_attributes += "\n" + key + ": " +  str(Global.player_attributes[key])
+	stats_text 
+	stats_text.text = "Buyed Items (" + str(Global.backpack.size()) + "): " + itemStringNameList + "\n\nBonus:\n" + player_attributes
 	
 
 func _on_button_pressed():
@@ -38,7 +42,11 @@ func roll_items():
 	var card1_title = $VFlowContainer/Card1/title
 	card1_title.text = selected_items[0].title
 	var card1_description = $VFlowContainer/Card1/description
-	card1_description.text = selected_items[0].description
+	var item_bonus_text = ""
+	for key in selected_items[0].bonus:
+			item_bonus_text += key + ": " +  str(selected_items[0].bonus[key]) + "\n"
+	
+	card1_description.text = item_bonus_text
 	var card1_cost = $VFlowContainer/Card1/cost
 	card1_cost.text = str(selected_items[0].cost)
 	
@@ -46,7 +54,11 @@ func roll_items():
 	var card2_title = $VFlowContainer/Card2/title
 	card2_title.text = selected_items[1].title
 	var card2_description = $VFlowContainer/Card2/description
-	card2_description.text = selected_items[1].description
+	item_bonus_text = ""
+	for key in selected_items[1].bonus:
+			item_bonus_text += key + ": " +  str(selected_items[1].bonus[key]) + "\n"
+	
+	card2_description.text = item_bonus_text
 	var card2_cost = $VFlowContainer/Card2/cost
 	card2_cost.text = str(selected_items[1].cost)
 	
@@ -54,7 +66,11 @@ func roll_items():
 	var card3_title = $VFlowContainer/Card3/title
 	card3_title.text = selected_items[2].title
 	var card3_description = $VFlowContainer/Card3/description
-	card3_description.text = selected_items[2].description
+	item_bonus_text = ""
+	for key in selected_items[2].bonus:
+			item_bonus_text += key + ": " +  str(selected_items[2].bonus[key]) + "\n"
+	
+	card3_description.text = item_bonus_text
 	var card3_cost = $VFlowContainer/Card3/cost
 	card3_cost.text = str(selected_items[2].cost)
 	
@@ -70,7 +86,7 @@ func load_items_from_json(file_path):
 
 	var parsed_data = JSON.parse_string(json_data)
 	for data in parsed_data:
-		items.append(Global.Item.new(data["id"], data["title"], data["description"], data["cost"]))
+		items.append(Global.Item.new(data["id"], data["title"], data["description"], data["cost"], data["bonus"]))
 	return items
 
 func get_random_items(items, count):
@@ -86,13 +102,19 @@ func get_random_items(items, count):
 
 
 func _on_cost_button_up(cardIndex):
-	var cost = selected_items[cardIndex - 1].cost
+	var item = selected_items[cardIndex - 1]
+	var cost = item.cost
 	if Global.money >= cost:
 		Global.money -= cost
 		hide_card(cardIndex)
-		Global.backpack.append(selected_items[cardIndex - 1])
-		
-
+		Global.backpack.append(item)
+		# Add bonus to player
+		for key in item.bonus:
+			if key in Global.player_attributes:
+				Global.player_attributes[key] += item.bonus[key]
+			else:
+				Global.player_attributes[key] = item.bonus[key]
+			
 func hide_card(index):
 	if index == 1:
 		get_node("VFlowContainer/Card1").hide()

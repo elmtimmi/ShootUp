@@ -3,36 +3,42 @@
 	"id": 1,
 	"title": "Mystisches Schwert",
 	"description": "Ein starkes Schwert mit magischen Kräften.",
-	"cost": 10
+	"cost": 10,
+	"bonus": {"attack speed": 1, "damage": 2}
   },
   {
 	"id": 2,
 	"title": "Unzerbrechliches Schild",
 	"description": "Bietet exzellenten Schutz gegen physische Angriffe.",
-	"cost": 15
+	"cost": 15,
+	"bonus": {"health": 3}
   },
   {
 	"id": 3,
 	"title": "Heiltrank",
 	"description": "Heilt Wunden und stellt Mana wieder her.",
-	"cost": 5
+	"cost": 5,
+	"bonus": {"health": 1}
   },
   {
 	"id": 4,
 	"title": "Langbogen des Jägers",
 	"description": "Ein langer Bogen für präzise Distanzangriffe.",
-	"cost": 12
+	"cost": 12,
+	"bonus": {"attack range": 3, "damage": 2}
   },
   {
 	"id": 5,
 	"title": "Scharfe Pfeile",
 	"description": "Scharfe Pfeile für den Bogen.",
-	"cost": 20
+	"cost": 20,
+	"bonus": {"attack speed": 1, "damage": 3}
   },
   {
 	"id": 6,
 	"title": "Ritterrüstung",
 	"description": "Starke Rüstung zum Schutz des Trägers.",
-	"cost": 20
+	"cost": 20,
+	"bonus": {"health": 6}
   }
 ]

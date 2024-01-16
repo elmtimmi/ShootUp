@@ -49,6 +49,11 @@ func _physics_process(delta):
 	# enemy attack
 	if player_health <= 0:
 		player_alive = false
+		Global.money = 0
+		Global.round_counter = 0
+		Global.backpack =  []
+		Global.player_attributes = {}
+		
 		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 	
 	# attack enemy
