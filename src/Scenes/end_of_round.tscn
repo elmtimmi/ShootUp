@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d37fmqdtts47t"]
+[gd_scene load_steps=6 format=3 uid="uid://d37fmqdtts47t"]
 
 [ext_resource type="Script" path="res://Scenes/end_of_round.gd" id="1_lakeq"]
 
@@ -16,6 +16,13 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c65i2"]
 bg_color = Color(1, 0.992157, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rudf0"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rivo"]
 bg_color = Color(1, 1, 1, 1)
@@ -67,7 +74,7 @@ offset_right = 338.315
 offset_bottom = 538.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
 
-[node name="Label4" type="Label" parent="VFlowContainer/playerStats"]
+[node name="StatsLabel" type="Label" parent="VFlowContainer/playerStats"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -81,7 +88,7 @@ theme_override_font_sizes/font_size = 20
 text = "Your stats"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="VFlowContainer/playerStats"]
+[node name="StatsText" type="Label" parent="VFlowContainer/playerStats"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -98,10 +105,11 @@ text = "- Player speed: 2
 - Long-distance: 5
 - Leben
 - Rüstung"
+autowrap_mode = 3
 
 [node name="footer" type="Node2D" parent="VFlowContainer"]
 
-[node name="Button" type="Button" parent="VFlowContainer/footer"]
+[node name="nextRound" type="Button" parent="VFlowContainer/footer"]
 modulate = Color(0.996078, 1, 1, 1)
 custom_minimum_size = Vector2(250, 50)
 offset_left = 744.0
@@ -112,7 +120,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_c65i2")
 text = "Next Round"
 
-[node name="Button2" type="Button" parent="VFlowContainer/footer"]
+[node name="Reroll" type="Button" parent="VFlowContainer/footer"]
 modulate = Color(0.996078, 1, 1, 1)
 custom_minimum_size = Vector2(250, 50)
 offset_left = 425.0
@@ -121,7 +129,7 @@ offset_right = 675.0
 offset_bottom = 524.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_c65i2")
-text = "Reroll"
+text = "Reroll: 20$"
 
 [node name="Card1" type="Node2D" parent="VFlowContainer"]
 
@@ -132,7 +140,7 @@ offset_right = 559.205
 offset_bottom = 427.96
 theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
 
-[node name="Label5" type="Label" parent="VFlowContainer/Card1"]
+[node name="title" type="Label" parent="VFlowContainer/Card1"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -148,80 +156,145 @@ horizontal_alignment = 1
 autowrap_mode = 3
 clip_text = true
 
-[node name="Label6" type="Label" parent="VFlowContainer/Card1"]
+[node name="description" type="Label" parent="VFlowContainer/Card1"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 371.0
-offset_top = 170.0
+offset_top = 186.0
 offset_right = 549.065
-offset_bottom = 412.92
+offset_bottom = 366.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "
-next Round 
-+5 Leben
-+3 Speed"
+next Round  +5 Leben +3 Speed"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="cost" type="Button" parent="VFlowContainer/Card1"]
+modulate = Color(0.996078, 1, 1, 1)
+custom_minimum_size = Vector2(1, 50)
+offset_left = 373.0
+offset_top = 365.0
+offset_right = 543.0
+offset_bottom = 415.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rudf0")
+text = "50$"
 
 [node name="Card2" type="Node2D" parent="VFlowContainer"]
+position = Vector2(214, 0)
 
-[node name="Panel3" type="Panel" parent="VFlowContainer/Card2"]
-offset_left = 583.0
-offset_top = 114.0
-offset_right = 783.205
-offset_bottom = 425.96
+[node name="Panel2" type="Panel" parent="VFlowContainer/Card2"]
+offset_left = 359.0
+offset_top = 116.0
+offset_right = 559.205
+offset_bottom = 427.96
 theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
 
-[node name="Label7" type="Label" parent="VFlowContainer/Card2/Panel3"]
-layout_mode = 1
+[node name="title" type="Label" parent="VFlowContainer/Card2"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -89.1025
-offset_top = 14.0
-offset_right = 88.9625
-offset_bottom = 73.99
+offset_left = 371.0
+offset_top = 128.0
+offset_right = 549.065
+offset_bottom = 188.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Gigantisches 
-Schwert"
+text = "Tims Trank"
 horizontal_alignment = 1
 autowrap_mode = 3
-justification_flags = 35
 clip_text = true
+
+[node name="description" type="Label" parent="VFlowContainer/Card2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 371.0
+offset_top = 186.0
+offset_right = 549.065
+offset_bottom = 366.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "
+next Round  +5 Leben +3 Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="cost" type="Button" parent="VFlowContainer/Card2"]
+modulate = Color(0.996078, 1, 1, 1)
+custom_minimum_size = Vector2(1, 50)
+offset_left = 373.0
+offset_top = 365.0
+offset_right = 543.0
+offset_bottom = 415.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rudf0")
+text = "50$"
 
 [node name="Card3" type="Node2D" parent="VFlowContainer"]
+position = Vector2(427, 0)
 
-[node name="Panel4" type="Panel" parent="VFlowContainer/Card3"]
-offset_left = 804.0
-offset_top = 113.0
-offset_right = 1004.21
-offset_bottom = 424.96
+[node name="Panel2" type="Panel" parent="VFlowContainer/Card3"]
+offset_left = 359.0
+offset_top = 116.0
+offset_right = 559.205
+offset_bottom = 427.96
 theme_override_styles/panel = SubResource("StyleBoxFlat_fw8q5")
 
-[node name="Label8" type="Label" parent="VFlowContainer/Card3"]
+[node name="title" type="Label" parent="VFlowContainer/Card3"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 817.0
+offset_left = 371.0
 offset_top = 128.0
-offset_right = 995.065
-offset_bottom = 187.99
+offset_right = 549.065
+offset_bottom = 188.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Kleiner Hut"
+text = "Tims Trank"
 horizontal_alignment = 1
 autowrap_mode = 3
-justification_flags = 35
 clip_text = true
+
+[node name="description" type="Label" parent="VFlowContainer/Card3"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 371.0
+offset_top = 186.0
+offset_right = 549.065
+offset_bottom = 366.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "
+next Round  +5 Leben +3 Speed"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+
+[node name="cost" type="Button" parent="VFlowContainer/Card3"]
+modulate = Color(0.996078, 1, 1, 1)
+custom_minimum_size = Vector2(1, 50)
+offset_left = 373.0
+offset_top = 365.0
+offset_right = 543.0
+offset_bottom = 415.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rudf0")
+text = "50$"
 
 [node name="Profile" type="Node2D" parent="VFlowContainer"]
 
-[node name="Label2" type="Label" parent="VFlowContainer/Profile"]
+[node name="Money" type="Label" parent="VFlowContainer/Profile"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -257,5 +330,8 @@ theme_override_font_sizes/font_size = 30
 text = ":)"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="VFlowContainer/footer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VFlowContainer/footer/Button2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VFlowContainer/footer/nextRound" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VFlowContainer/footer/Reroll" to="." method="_on_reroll_pressed"]
+[connection signal="button_up" from="VFlowContainer/Card1/cost" to="." method="_on_cost_button_up" binds= [1]]
+[connection signal="button_up" from="VFlowContainer/Card2/cost" to="." method="_on_cost_button_up" binds= [2]]
+[connection signal="button_up" from="VFlowContainer/Card3/cost" to="." method="_on_cost_button_up" binds= [3]]

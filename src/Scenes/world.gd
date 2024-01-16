@@ -14,10 +14,9 @@ var map_min_y = -48 * tilesize + 1 * tilesize
 var map_max_y = 80 * tilesize - 5 * tilesize
 
 # Game variables
-var rounds = 0
+#var rounds = 0
 var timer_time = 2.0  # Initial timer time
 var minimum_time = 0.5  # Minimum timer time
-
 
 
 func spawn_enemy(pos):
@@ -80,4 +79,5 @@ func _on_enemy_spawn_timer_timeout():
 
 
 func _on_round_timer_timeout():
+	Global.round_counter += 1
 	get_tree().change_scene_to_file("res://Scenes/end_of_round.tscn")
