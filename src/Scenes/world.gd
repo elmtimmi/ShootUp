@@ -45,13 +45,13 @@ func spawn_enemy(pos):
 	#	print("Signal connection failed. Error: ", connection_result)
 	
 	## Enemy dies
-	# enemy_instance.connect("enemy_died", Callable(enemy_instance, "_on_enemy_died"))
+	enemy_instance.connect("enemy_died", Callable(self, "_on_enemy_died"))
 	# To debug the connection:
-	var connection_result = enemy_instance.connect("enemy_died", Callable(self, "_on_enemy_died"))
-	if connection_result == OK:
-		print("Signal successfully connected.")
-	else:
-		print("Signal connection failed. Error: ", connection_result)
+	# var connection_result = enemy_instance.connect("enemy_died", Callable(self, "_on_enemy_died"))
+	# if connection_result == OK:
+	#	print("Signal successfully connected.")
+	#else:
+	#	print("Signal connection failed. Error: ", connection_result)
 
 func random_pos_on_map():
 	var random_x = randf_range(map_min_x, map_max_x)
