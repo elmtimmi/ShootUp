@@ -42,7 +42,9 @@ func _physics_process(delta):
 	position.x = clamp(position.x, map_min_x, map_max_x)
 	position.y = clamp(position.y, map_min_y, map_max_y)
 	
+	# Label updates
 	update_health_display()
+	update_money_display()
 	
 	# enemy attack
 	if player_health <= 0:
@@ -98,3 +100,15 @@ func attack_enemy():
 
 func _on_attack_cooldown_timer_timeout():
 	player_can_attack = true
+
+
+### Collect money
+func _on_collect_range_body_entered(body):
+	if body.has_method("money"):
+		body.in_range_of_player = true
+		body.player_pos = global_position
+		#body.queue_free()
+		
+func update_money_display():
+	var money_label = get_node("/root/World/HUD/MoneyLabel")  # Adjust the path to your label
+	money_label.text = "Money: " + str(Global.money)
